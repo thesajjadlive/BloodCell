@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('dashboard','DashboardController@index')->name('admin.dashboard');
+
+Route::resource('campaign','CampaignController');
+Route::post('campaign/{id}/restore','CampaignController@restore')->name('campaign.restore');
+Route::delete('campaign/{id}/permanent_delete','CampaignController@permanent_delete')->name('campaign.permanent_delete');
+

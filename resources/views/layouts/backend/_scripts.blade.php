@@ -1,7 +1,10 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 8/27/2019
- * Time: 2:08 AM
- */
+<script src="{{ asset('assets/backend/assets/js/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ asset('assets/backend/assets/js/popper.min.js') }}"></script>
+<script src="{{ asset('assets/backend/assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/backend/assets/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/backend/assets/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/backend/assets/js/jquery.slimscroll.js') }}"></script>
+<script src="{{ asset('assets/backend/assets/js/select2.min.js') }}"></script>
+<script src="{{ asset('assets/backend/assets/js/moment.min.js') }}"></script>
+<script src="{{ asset('assets/backend/assets/js/bootstrap-datetimepicker.min.js') }}"></script>
+<script src="{{ asset('assets/backend/assets/js/app.js') }}"></script>
