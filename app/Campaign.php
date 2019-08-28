@@ -16,7 +16,7 @@ class Campaign extends Model
         'organizer',
         'created_by',
         'updated_by',
-        'image',
+        'file',
         'status',
     ];
 

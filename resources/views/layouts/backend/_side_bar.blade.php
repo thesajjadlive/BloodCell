@@ -11,6 +11,9 @@
             <li>
                 <a href="{{ route('volunteer.index') }}"><i class="fa fa-user"></i> <span>Volunteer</span></a>
             </li>
+            <li>
+                <a href="{{ route('donor.index') }}"><i class="fa fa-universal-access"></i> <span>Donor</span></a>
+            </li>
             <li class="submenu">
                 <a href="#"><i class="fa fa-user"></i> <span> Employees </span> <span class="menu-arrow"></span></a>
                 <ul style="display: none;">

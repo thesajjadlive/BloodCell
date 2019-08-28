@@ -8,7 +8,6 @@
             <div class="pl-1 text-danger">{{ $message }}</div>
             @enderror
         </div>
-
     </div>
 
     <div class="col-sm-6">
@@ -66,57 +65,64 @@
 
     </div>
 
-
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label>Existing Image <span class="text-danger"></span></label>
+            @if(isset($volunteer) && $volunteer->file != null)
+                <img style="height: 100px; width: 100px" src="{{ asset($volunteer->file) }}" alt="">
+            @endif
+        </div>
+    </div>
 
 
 
     <div class="col-sm-6">
         <div class="form-group">
-            <label>Avatar</label>
-            <div class="profile-upload">
-                <div class="upload-img">
-                    <img alt="" src="assets/img/user.jpg">
-                </div>
-                <div class="upload-input">
-                    <input type="file" class="form-control">
-                </div>
-            </div>
+
+            <label>Upload new Image <span class="text-danger"></span></label>
+
+            <input name="file"  class="form-control form-control-line @error('file') is-invalid @enderror" type="file">
+            @error('file')
+            <div class="pl-1 text-danger">{{ $message }}</div>
+            @enderror
         </div>
     </div>
 
 </div>
 
 
-<div class="form-group">
-    @php
-        if(old("gender")){
-            $gender = old('gender');
-        }elseif(isset($volunteer)){
-            $gender = $volunteer->gender;
-        }else{
-            $gender = null;
-        }
-    @endphp
-    <label for="gender" class="display-block">Gender</label>
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="gender" id="male" value="Male" @if($gender =='Male') checked @endif>
-        <label  class="form-check-label" for="male">
-            Male
-        </label>
+<div class="col-sm-6">
+    <div class="form-group">
+        @php
+            if(old("gender")){
+                $gender = old('gender');
+            }elseif(isset($volunteer)){
+                $gender = $volunteer->gender;
+            }else{
+                $gender = null;
+            }
+        @endphp
+        <label for="gender" class="display-block">Gender</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" id="male" value="Male" @if($gender =='Male') checked @endif>
+            <label  class="form-check-label" for="male">
+                Male
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" id="female" value="Female" @if($gender =='Female') checked @endif>
+            <label class="form-check-label" for="female">
+                Female
+            </label>
+        </div>
+        @error('gender')
+        <div class="pl-1 text-danger">{{ $message }}</div>
+        @enderror
     </div>
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="gender" id="female" value="Female" @if($gender =='Female') checked @endif>
-        <label class="form-check-label" for="female">
-            Female
-        </label>
-    </div>
-    @error('gender')
-    <div class="pl-1 text-danger">{{ $message }}</div>
-    @enderror
+
 </div>
 
-
-
+<div class="col-sm-6">
     <div class="form-group">
         @php
             if(old("status")){
@@ -144,4 +150,5 @@
         <div class="pl-1 text-danger">{{ $message }}</div>
         @enderror
     </div>
+</div>
 

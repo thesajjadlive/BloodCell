@@ -48,6 +48,7 @@
                             <th>Deatils</th>
                             <th>Venue</th>
                             <th>Organizer</th>
+                            <th>Image</th>
                             <th style="min-width: 110px;">Campaigning Date</th>
                             <th>Status</th>
                             <th class="text-right">Action</th>
@@ -64,6 +65,9 @@
                             <td width="30%">{{ $campaign->details }}</td>
                             <td>{{ $campaign->venue }}</td>
                             <td>{{ $campaign->organizer }}</td>
+                            <td>
+                            <td><img style="height: 100px; width: 100px" src="{{ asset($campaign->file) }}" alt=""></td>
+                            </td>
                             <td>{{ $campaign->date }}</td>
                             <td>
                                 <span class="custom-badge {{ $campaign->status == 'Active'?'status-green':'status-red' }} ">{{ $campaign->status }}</span>

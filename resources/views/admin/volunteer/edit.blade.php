@@ -10,12 +10,12 @@
             </div>
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
-                    <form action="{{ route('campaign.update',$campaign->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('volunteer.update',$volunteer->id) }}" method="post" enctype="multipart/form-data">
                         @method('put')
-                        @include('admin.campaign._form')\
+                        @include('admin.volunteer._form')\
 
                         <div class="m-t-20 text-center">
-                            <button class="btn btn-primary submit-btn">Update Campaign</button>
+                            <button class="btn btn-primary submit-btn">Update Volunteer</button>
                         </div>
 
                     </form>

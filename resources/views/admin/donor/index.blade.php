@@ -8,9 +8,9 @@
             <div class="col-sm-4 col-3">
                 <h4 class="page-title">{{ $title }}</h4>
             </div>
-            <div class="col-sm-8 col-9 text-right m-b-20">
+            {{--<div class="col-sm-8 col-9 text-right m-b-20">
                 <a href="{{ route('volunteer.create') }}" class="btn btn-primary float-right btn-rounded"><i class="fa fa-plus"></i> Add Volunteer</a>
-            </div>
+            </div>--}}
         </div>
 
 
@@ -18,7 +18,7 @@
 
                 <div class="col-sm-6 col-md-4">
                     <div class="form-group form-focus">
-                        <label class="focus-label">Search by volunteer Name</label>
+                        <label class="focus-label">Search by Donor Name</label>
                         <input value="{{ request()->search }}" name="search" type="text" class="form-control floating">
                     </div>
                 </div>
@@ -48,39 +48,35 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Bood Group</th>
-                            <th>Streed Address</th>
                             <th>District</th>
-                            <th>Image</th>
                             <th>Gender</th>
                             <th>Status</th>
-                            <th class="text-right">Action</th>
+                            {{--<th class="text-right">Action</th>--}}
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($volunteers as $volunteer)
+                        @foreach($donors as $donor)
                         <tr>
                             <td>{{ $serial++ }}</td>
                             <td>
-                                <img width="28" height="28" src="assets/img/user.jpg" class="rounded-circle" alt=""> <h2>{{ $volunteer->name }}</h2>
+                                <img width="28" height="28" src="assets/img/user.jpg" class="rounded-circle" alt=""> <h2>{{ $donor->name }}</h2>
                             </td>
                             <
-                            <td width="30%">{{ $volunteer->email }}</td>
-                            <td>{{ $volunteer->phone }}</td>
-                            <td>{{ $volunteer->blood_group }}</td>
-                            <td>{{ $volunteer->street_address }}</td>
-                            <td>{{ $volunteer->district }}</td>
-                            <td><img style="height: 100px; width: 100px" src="{{ asset($volunteer->file) }}" alt=""></td>
-                            <td>{{ $volunteer->gender }}</td>
+                            <td width="30%">{{ $donor->email }}</td>
+                            <td>{{ $donor->phone }}</td>
+                            <td>{{ $donor->blood_group }}</td>
+                            <td>{{ $donor->district }}</td>
+                            <td>{{ $donor->gender }}</td>
                             <td>
-                                <span class="custom-badge {{ $volunteer->status == 'Active'?'status-green':'status-red' }} ">{{ $volunteer->status }}</span>
+                                <span class="custom-badge {{ $donor->status == 'Active'?'status-green':'status-red' }} ">{{ $donor->status }}</span>
                             </td>
-                            <td class="text-right">
+                       {{--     <td class="text-right">
                                 <div class="dropdown dropdown-action">
                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        @if($volunteer->deleted_at == null)
-                                        <a class="dropdown-item" href="{{ route('volunteer.edit', $volunteer->id) }}"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                        <form action="{{ route('volunteer.destroy',$volunteer->id) }}" method="post">
+                                        @if($donor->deleted_at == null)
+                                        <a class="dropdown-item" href="{{ route('volunteer.edit', $donor->id) }}"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                        <form action="{{ route('volunteer.destroy',$donor->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="dropdown-item" href="#" onclick="return confirm('Are you confirm to delete this volunteer?')" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</button>
@@ -88,13 +84,13 @@
                                         </form>
 
                                             @else
-                                            <form action="{{ route('volunteer.restore',$volunteer->id) }}" method="post">
+                                            <form action="{{ route('volunteer.restore',$donor->id) }}" method="post">
                                                 @csrf
                                                 <button class="dropdown-item" href="#" onclick="return confirm('Are you confirm to restore this volunteer?')" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Restore</button>
 
                                             </form>
 
-                                            <form action="{{ route('volunteer.permanent_delete',$volunteer->id) }}" method="post">
+                                            <form action="{{ route('volunteer.permanent_delete',$donor->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="dropdown-item" href="#" onclick="return confirm('Are you confirm to permanently delete this volunteer?')" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Permanent Delete</button>
@@ -106,13 +102,14 @@
                                     </div>
                                 </div>
                             </td>
+                        --}}
                         </tr>
                             @endforeach
 
                         </tbody>
                     </table>
                 </div>
-                {{ $volunteers->render() }}
+                {{ $donors->render() }}
             </div>
         </div>
 

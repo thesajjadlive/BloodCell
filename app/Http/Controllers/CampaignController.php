@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Campaign;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 
 class CampaignController extends Controller
@@ -64,6 +65,14 @@ class CampaignController extends Controller
         ]);
 
         $campaign= $request->except('_token');
+
+        //file upload
+        if ($request->hasFile('file')){
+            $file = $request->file('file');
+            $file->move('images/campaigns/',$file->getClientOriginalName());
+            $campaign['file'] = 'images/campaigns/'.$file->getClientOriginalName();
+        }
+
         $campaign['created_by'] = 1;
         Campaign::create($campaign);
         session()->flash('message','Campaign is Created Successfully!');
@@ -112,6 +121,15 @@ class CampaignController extends Controller
         ]);
 
         $campaign_data= $request->except('_token','_method');
+
+        //file upload
+        if ($request->hasFile('file')){
+            $file = $request->file('file');
+            $file->move('images/campaigns/',$file->getClientOriginalName());
+            File::delete($campaign->file);
+            $campaign_data['file'] = 'images/campaigns/'.$file->getClientOriginalName();
+        }
+
         $campaign_data['updated_by'] = 1;
         $campaign->update($campaign_data);
         session()->flash('message','Campaign is Updated Successfully!');

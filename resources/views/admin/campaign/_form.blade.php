@@ -45,7 +45,7 @@
 
 
 
-    <div class="col-sm-6">
+    <div class="col-sm-12">
         <div class="form-group">
             <label>Organizer <span class="text-info">(Optional)</span></label>
             <input name="organizer" class="form-control" type="text" value="{{ old('organizer',isset($campaign)?$campaign->organizer:null) }}">
@@ -55,15 +55,24 @@
 
     <div class="col-sm-6">
         <div class="form-group">
-            <label>Avatar</label>
-            <div class="profile-upload">
-                <div class="upload-img">
-                    <img alt="" src="assets/img/user.jpg">
-                </div>
-                <div class="upload-input">
-                    <input type="file" class="form-control">
-                </div>
-            </div>
+            <label>Existing Image <span class="text-danger"></span></label>
+            @if(isset($camapaign) && $camapaign->file != null)
+                <img style="height: 100px; width: 100px" src="{{ asset($camapaign->file) }}" alt="">
+            @endif
+        </div>
+    </div>
+
+
+
+    <div class="col-sm-6">
+        <div class="form-group">
+
+            <label>Upload new Image <span class="text-danger"></span></label>
+
+            <input name="file"  class="form-control form-control-line @error('file') is-invalid @enderror" type="file">
+            @error('file')
+            <div class="pl-1 text-danger">{{ $message }}</div>
+            @enderror
         </div>
     </div>
 

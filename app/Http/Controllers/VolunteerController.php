@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Volunteer;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 
 class VolunteerController extends Controller
@@ -67,6 +68,17 @@ class VolunteerController extends Controller
         ]);
 
         $volunteer= $request->except('_token');
+
+
+        //file upload
+        if ($request->hasFile('file')){
+            $file = $request->file('file');
+            $file->move('images/volunteers/',$file->getClientOriginalName());
+            $volunteer['file'] = 'images/volunteers/'.$file->getClientOriginalName();
+        }
+
+
+
         $volunteer['created_by'] = 1;
         Volunteer::create($volunteer);
         session()->flash('message','Volunteer is Created Successfully!');
@@ -92,7 +104,9 @@ class VolunteerController extends Controller
      */
     public function edit(Volunteer $volunteer)
     {
-        //
+        $data['title'] = 'Create New Volunteer';
+        $data['volunteer'] = $volunteer;
+        return view('admin.volunteer.edit',$data);
     }
 
     /**
@@ -104,7 +118,30 @@ class VolunteerController extends Controller
      */
     public function update(Request $request, Volunteer $volunteer)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'phone'=>'required',
+            'blood_group'=>'required',
+            'street_address'=>'required',
+            'district'=>'required',
+            'gender'=>'required',
+            'status'=>'required',
+        ]);
+
+        $volunteer_data= $request->except('_token','_method');
+
+        //file upload
+        if ($request->hasFile('file')){
+            $file = $request->file('file');
+            $file->move('images/volunteers/',$file->getClientOriginalName());
+            File::delete($volunteer->file);
+            $volunteer_data['file'] = 'images/volunteers/'.$file->getClientOriginalName();
+        }
+        $volunteer_data['updated_by'] = 1;
+        $volunteer->update($volunteer_data);
+        session()->flash('message','Volunteer is Updated Successfully!');
+        return redirect()->route('volunteer.index');
     }
 
     /**
@@ -115,6 +152,24 @@ class VolunteerController extends Controller
      */
     public function destroy(Volunteer $volunteer)
     {
-        //
+        $volunteer->delete();
+        session()->flash('message','Volunteer is Deleted Successfully!');
+        return redirect()->route('volunteer.index');
+    }
+
+    public function restore($id)
+    {
+        $volunteer = Volunteer::onlyTrashed()->findOrFail($id);
+        $volunteer->restore();
+        session()->flash('message','Volunteer is Restored Duccessfully!');
+        return redirect()->route('volunteer.index');
+    }
+
+    public function permanent_delete($id)
+    {
+        $volunteer = Volunteer::onlyTrashed()->findOrFail($id);
+        $volunteer->forceDelete();
+        session()->flash('message','Volunteer has been permanently deleted!');
+        return redirect()->route('volunteer.index');
     }
 }
