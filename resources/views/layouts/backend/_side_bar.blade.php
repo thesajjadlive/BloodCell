@@ -8,6 +8,9 @@
             <li>
                 <a href="{{ route('campaign.index') }}"><i class="fa fa-hospital-o"></i> <span>Campaign</span></a>
             </li>
+            <li>
+                <a href="{{ route('volunteer.index') }}"><i class="fa fa-user"></i> <span>Volunteer</span></a>
+            </li>
             <li class="submenu">
                 <a href="#"><i class="fa fa-user"></i> <span> Employees </span> <span class="menu-arrow"></span></a>
                 <ul style="display: none;">

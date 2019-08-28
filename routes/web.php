@@ -21,3 +21,10 @@ Route::resource('campaign','CampaignController');
 Route::post('campaign/{id}/restore','CampaignController@restore')->name('campaign.restore');
 Route::delete('campaign/{id}/permanent_delete','CampaignController@permanent_delete')->name('campaign.permanent_delete');
 
+Route::resource('volunteer','VolunteerController');
+Route::post('volunteer/{id}/restore','VolunteerController@restore')->name('volunteer.restore');
+Route::delete('volunteer/{id}/permanent_delete','VolunteerController@permanent_delete')->name('volunteer.permanent_delete');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
