@@ -14,7 +14,7 @@ class VolunteerController extends Controller
      */
     public function index(Request $request)
     {
-        $data['title'] = 'volunteer List';
+        $data['title'] = 'Volunteer List';
         $volunteer = new Volunteer();
         $volunteer = $volunteer->withTrashed();
         if($request->has('search') && $request->search != null){
@@ -43,7 +43,8 @@ class VolunteerController extends Controller
      */
     public function create()
     {
-        //
+        $data['title'] = 'Create New Volunteer';
+        return view('admin.volunteer.create',$data);
     }
 
     /**
@@ -54,7 +55,22 @@ class VolunteerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'phone'=>'required',
+            'blood_group'=>'required',
+            'street_address'=>'required',
+            'district'=>'required',
+            'gender'=>'required',
+            'status'=>'required',
+        ]);
+
+        $volunteer= $request->except('_token');
+        $volunteer['created_by'] = 1;
+        Volunteer::create($volunteer);
+        session()->flash('message','Volunteer is Created Successfully!');
+        return redirect()->route('volunteer.index');
     }
 
     /**
