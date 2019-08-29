@@ -23,6 +23,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data['title']= 'Home';
+        return view('front.home',$data);
     }
+
+    public function about()
+    {
+        $data['title']= 'About Us';
+        return view('front.about',$data);
+    }
+
+    public function find()
+    {
+        $data['title']= 'Find Donor';
+        return view('front.find',$data);
+    }
+
+
+
 }

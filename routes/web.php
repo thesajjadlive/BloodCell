@@ -11,9 +11,21 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+
+
+Route::get('/','HomeController@index')->name('home');
+Route::get('about','HomeController@about')->name('about');
+Route::get('find','HomeController@find')->name('find');
+
+
+
+
+
+
+
 
 Route::middleware('auth')->prefix('admin')->group(function (){
 
