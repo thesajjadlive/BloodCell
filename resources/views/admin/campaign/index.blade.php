@@ -49,7 +49,7 @@
                             <th>Venue</th>
                             <th>Organizer</th>
                             <th>Image</th>
-                            <th style="min-width: 110px;">Campaigning Date</th>
+                            <th >Campaigning Date</th>
                             <th>Status</th>
                             <th class="text-right">Action</th>
                         </tr>
@@ -59,15 +59,12 @@
                         <tr>
                             <td>{{ $serial++ }}</td>
                             <td>
-                                <img width="28" height="28" src="assets/img/user.jpg" class="rounded-circle" alt=""> <h2>{{ $campaign->name }}</h2>
+                                <h2>{{ $campaign->name }}</h2>
                             </td>
-                            <
-                            <td width="30%">{{ $campaign->details }}</td>
+                            <td ><p style="max-height: 100px; max-width:100%; overflow: scroll; ">{{ $campaign->details }}</p></td>
                             <td>{{ $campaign->venue }}</td>
                             <td>{{ $campaign->organizer }}</td>
-                            <td>
                             <td><img style="height: 100px; width: 100px" src="{{ asset($campaign->file) }}" alt=""></td>
-                            </td>
                             <td>{{ $campaign->date }}</td>
                             <td>
                                 <span class="custom-badge {{ $campaign->status == 'Active'?'status-green':'status-red' }} ">{{ $campaign->status }}</span>

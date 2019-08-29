@@ -21,7 +21,7 @@ class CreateDonorsTable extends Migration
             $table->string('blood_group');
             $table->string('district');
             $table->enum('gender',['Male','Female']);
-            $table->enum('status',['Active','Inactive']);
+            $table->enum('status',['Active','Inactive'])->default('Active');
             $table->softDeletes();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by')->nullable();

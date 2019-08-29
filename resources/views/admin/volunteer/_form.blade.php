@@ -35,7 +35,18 @@
     <div class="col-sm-6">
         <div class="form-group">
             <label>Blood Group <span class="text-danger">*</span></label>
-            <input name="blood_group" value="{{ old('blood_group',isset($volunteer)?$volunteer->blood_group:null) }}" class="form-control form-control-line @error('blood_group') is-invalid @enderror" type="text">
+            <input name="blood_group" value="{{ old('blood_group',isset($volunteer)?$volunteer->blood_group:null) }}" list="bgroup" class="form-control form-control-line @error('blood_group') is-invalid @enderror" type="text">
+            <datalist id="bgroup">
+                <option value="A+"></option>
+                <option value="A-"></option>
+                <option value="B+"></option>
+                <option value="B-"></option>
+                <option value="O+"></option>
+                <option value="O-"></option>
+                <option value="AB+"></option>
+                <option value="AB-"></option>
+            </datalist>
+
             @error('blood_group')
             <div class="pl-1 text-danger">{{ $message }}</div>
             @enderror
@@ -57,7 +68,8 @@
     <div class="col-sm-6">
         <div class="form-group">
             <label>District <span class="text-danger">*</span></label>
-            <input name="district" value="{{ old('district',isset($volunteer)?$volunteer->district:null) }}" class="form-control form-control-line @error('district') is-invalid @enderror" type="text">
+            <input name="district" value="{{ old('district',isset($volunteer)?$volunteer->district:null) }}" list="district" class="form-control form-control-line @error('district') is-invalid @enderror" type="text">
+            @include('admin.volunteer._district_list')
             @error('district')
             <div class="pl-1 text-danger">{{ $message }}</div>
             @enderror

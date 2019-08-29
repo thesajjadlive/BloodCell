@@ -61,7 +61,7 @@
                             <td>
                                 <img width="28" height="28" src="assets/img/user.jpg" class="rounded-circle" alt=""> <h2>{{ $donor->name }}</h2>
                             </td>
-                            <
+
                             <td width="30%">{{ $donor->email }}</td>
                             <td>{{ $donor->phone }}</td>
                             <td>{{ $donor->blood_group }}</td>

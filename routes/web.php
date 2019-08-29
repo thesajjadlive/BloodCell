@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware('auth')->prefix('admin')->group(function (){
 
-
-Route::get('dashboard','DashboardController@index')->name('admin.dashboard')->middleware('auth');
+Route::get('dashboard','DashboardController@index')->name('admin.dashboard');
 Route::resource('campaign','CampaignController');
 Route::post('campaign/{id}/restore','CampaignController@restore')->name('campaign.restore');
 Route::delete('campaign/{id}/permanent_delete','CampaignController@permanent_delete')->name('campaign.permanent_delete');
@@ -28,6 +28,8 @@ Route::delete('volunteer/{id}/permanent_delete','VolunteerController@permanent_d
 
 Route::resource('donor','DonorController');
 
+});
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

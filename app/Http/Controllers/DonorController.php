@@ -14,7 +14,7 @@ class DonorController extends Controller
      */
     public function index(Request $request)
     {
-        $data['title'] = 'Volunteer List';
+        $data['title'] = 'Donor List';
         $donor = new Donor();
         $donor = $donor->withTrashed();
         if($request->has('search') && $request->search != null){
