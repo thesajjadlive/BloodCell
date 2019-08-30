@@ -23,7 +23,7 @@ class CreateDonorsTable extends Migration
             $table->enum('gender',['Male','Female']);
             $table->enum('status',['Active','Inactive'])->default('Active');
             $table->softDeletes();
-            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });

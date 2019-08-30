@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Campaign;
 use App\Donor;
 use Illuminate\Http\Request;
 
@@ -58,6 +59,23 @@ class HomeController extends Controller
         $data['serial'] = managePagination($donor);
         
         return view('front.find',$data);
+    }
+
+
+    public function campaign()
+    {
+        $data['title'] = 'Campaign List';
+        $data['campaigns'] = Campaign::where('status','Active')->orderby('id','desc')->get();
+
+        return view('front.campaign',$data);
+    }
+
+    public function campaign_details($id)
+    {
+        $data['title'] = 'Campaign Details';
+        $data['campaign'] = Campaign::findOrFail($id);
+
+        return view('front.details',$data);
     }
 
 

@@ -19,7 +19,8 @@
 Route::get('/','HomeController@index')->name('home');
 Route::get('about','HomeController@about')->name('about');
 Route::get('find','HomeController@find')->name('find');
-
+Route::get('campaign','HomeController@campaign')->name('campaign');
+Route::get('campaign-details/{id}','HomeController@campaign_details')->name('campaign.details');
 
 
 

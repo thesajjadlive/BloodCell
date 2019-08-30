@@ -55,7 +55,7 @@
 
                     <li><a href="{{ route('about') }}">About Us</a></li>
 
-                    <li><a href="events.html">Campaign</a></li>
+                    <li><a href="{{ route('campaign') }}">Campaign</a></li>
 
                     <li><a href="element-team.html">Team</a> </li>
 
