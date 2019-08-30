@@ -24,7 +24,8 @@ Route::get('find','HomeController@find')->name('find');
 
 
 
-
+/*{{ str_limit($post->details,100) }}
+<a href="{{ route('blog.details',$post->id) }}" class="btn btn-primary">View More</a>*/
 
 
 Route::middleware('auth')->prefix('admin')->group(function (){
