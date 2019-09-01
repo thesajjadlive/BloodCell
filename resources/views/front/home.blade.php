@@ -17,7 +17,7 @@
 
                         <h3>Want to become a donor ?</h3>
 
-                        <a href="#" class="btn btn-theme margin-top-32">Register Here</a>
+                        <a href="{{ route('front.register') }}" class="btn btn-theme margin-top-32">Click Here</a>
                     </div>
                 </div> <!-- end .col-md-12  -->
             </div>

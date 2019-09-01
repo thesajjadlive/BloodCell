@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Campaign;
 use App\Donor;
+use App\Volunteer;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -35,6 +36,13 @@ class HomeController extends Controller
         return view('front.about',$data);
     }
 
+    public function team()
+    {
+        $data['title']= 'Our Team';
+        $data['teams'] = Volunteer::where('status','Active')->orderby('id','desc')->get();
+        return view('front.team',$data);
+    }
+
     public function find(Request $request)
     {
         $data['title']= 'Find Donor';
@@ -47,7 +55,7 @@ class HomeController extends Controller
         if($request->has('blood_group') && $request->blood_group != null){
             $donor = $donor->where('blood_group',$request->blood_group);
         }
-        $donor = $donor->orderBy('id','DESC')->paginate(3);
+        $donor = $donor->orderBy('id','DESC')->paginate(10);
         $data['donors'] = $donor;
 
         if (isset($request->blood_group) || $request->search) {

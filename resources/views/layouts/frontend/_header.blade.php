@@ -57,15 +57,9 @@
 
                     <li><a href="{{ route('campaign') }}">Campaign</a></li>
 
-                    <li><a href="element-team.html">Team</a> </li>
+                    <li><a href="{{ route('team') }}">Team</a> </li>
 
-                    <li>
-                        <a href="#"><i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i></a>
-                        <ul class="drop-down">
-                            <li><a href="register.html"><i class="fa fa-user fa-fw"></i>Register</a></li>
-                            <li><a href="#"><i class="fa fa-sign-out fa-fw"></i>Sign in</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="{{ route('front.register') }}">Register</a> </li>
 
                 </ul>
             </div>

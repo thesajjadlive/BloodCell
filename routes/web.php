@@ -19,9 +19,12 @@
 Route::get('/','HomeController@index')->name('home');
 Route::get('about','HomeController@about')->name('about');
 Route::get('find','HomeController@find')->name('find');
+Route::get('team','HomeController@team')->name('team');
 Route::get('campaign','HomeController@campaign')->name('campaign');
 Route::get('campaign-details/{id}','HomeController@campaign_details')->name('campaign.details');
-
+Route::get('registration','RegisterController@index')->name('front.register');
+Route::post('volunteer-registration','RegisterController@volunteer_store')->name('volunteer.register');
+Route::post('donor-registration','RegisterController@donor_store')->name('donor.register');
 
 
 

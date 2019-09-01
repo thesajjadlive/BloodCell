@@ -23,7 +23,7 @@ class DonorController extends Controller
         if($request->has('status') && $request->status != null){
             $donor = $donor->where('status',$request->status);
         }
-        $donor = $donor->orderBy('id','DESC')->paginate(3);
+        $donor = $donor->orderBy('id','DESC')->paginate(5);
         $data['donors'] = $donor;
 
         if (isset($request->status) || $request->search) {

@@ -2,7 +2,7 @@
 @section('content')
     <!--  PAGE HEADING -->
 
-    <section class="page-header" style="height:200px;" data-stellar-background-ratio="1.2">
+    <section class="page-header" style="height:200px; padding-top: 50px;" data-stellar-background-ratio="1.2">
 
         <div class="container">
 
@@ -60,7 +60,7 @@
                                 <input style="width:80%; display:inline;" type="text" value="{{ request()->search }}" name="search" class="form-control" placeholder="Where do you need?. e.g. Dhaka">
                             </div>
 
-                            <input type="hidden" value="submit" />
+                            <input type="hidden" name="find" value="submit" />
 
                         </form> <!-- end #search-form  -->
                     </div> <!-- end .search-form-404  -->
@@ -76,51 +76,107 @@
                 </div>
 
                     <h5>Recently Registered Donors :</h5>
-                <div class="col-md-12">
-                    <div class="table-responsive">
-                        <table class="table table-striped custom-table">
-                            <thead>
-                            <tr>
-                                {{--<th>SL No.</th>--}}
-                                <th>Name</th>
-                                <th>Bood Group</th>
-                                <th>District</th>
-                                <th>Email</th>
-                                <th>Phone</th>
 
-                                {{--<th class="text-right">Action</th>--}}
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($donors as $index=>$donor)
-                                @if($index <= 4)
+
+                @if(isset($_GET['find']))
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped custom-table">
+                                <thead>
                                 <tr>
-                                    {{--<td>{{ $serial++ }}</td>--}}
-                                    <td>
-                                        {{ $donor->name }}
-                                    </td>
-                                    <td>{{ $donor->blood_group }}</td>
-                                    <td>{{ $donor->district }}</td>
-                                    <td>
-                                        <a href="mailto:{{ $donor->email }}" style="text-decoration: none; color:black">
-                                            {{ $donor->email }}
-                                        </a>
-                                        </td>
-                                    <td>
-                                        <a href="tel:+88{{ $donor->phone }}" style="text-decoration: none; color:black">
-                                            Call Now !
-                                        </a>
-                                    </td>
+                                    {{--<th>SL No.</th>--}}
+                                    <th>Name</th>
+                                    <th>Bood Group</th>
+                                    <th>District</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
 
+                                    {{--<th class="text-right">Action</th>--}}
                                 </tr>
-                                @endif
-                            @endforeach
+                                </thead>
+                                <tbody>
+                                @foreach($donors as $index=>$donor)
 
-                            </tbody>
-                        </table>
+                                        <tr>
+                                            {{--<td>{{ $serial++ }}</td>--}}
+                                            <td>
+                                                {{ $donor->name }}
+                                            </td>
+                                            <td>{{ $donor->blood_group }}</td>
+                                            <td>{{ $donor->district }}</td>
+                                            <td>
+                                                <a href="mailto:{{ $donor->email }}" style="text-decoration: none; color:black">
+                                                    {{ $donor->email }}
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="tel:+88{{ $donor->phone }}" style="text-decoration: none; color:black">
+                                                    Call Now !
+                                                </a>
+                                            </td>
+
+                                        </tr>
+
+                                @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
+                        {{ $donors->render() }}
                     </div>
-                    {{ $donors->render() }}
-                </div>
+                @endif
+
+
+
+
+
+
+                @if(!isset($_GET['find']))
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped custom-table">
+                                <thead>
+                                <tr>
+                                    {{--<th>SL No.</th>--}}
+                                    <th>Name</th>
+                                    <th>Bood Group</th>
+                                    <th>District</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+
+                                    {{--<th class="text-right">Action</th>--}}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($donors as $index=>$donor)
+                                    @if($index <= 4)
+                                        <tr>
+                                            {{--<td>{{ $serial++ }}</td>--}}
+                                            <td>
+                                                {{ $donor->name }}
+                                            </td>
+                                            <td>{{ $donor->blood_group }}</td>
+                                            <td>{{ $donor->district }}</td>
+                                            <td>
+                                                <a href="mailto:{{ $donor->email }}" style="text-decoration: none; color:black">
+                                                    {{ $donor->email }}
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="tel:+88{{ $donor->phone }}" style="text-decoration: none; color:black">
+                                                    Call Now !
+                                                </a>
+                                            </td>
+
+                                        </tr>
+                                    @endif
+                                @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                @endif
 
 
                 </div> <!--  end col-sm-12  -->

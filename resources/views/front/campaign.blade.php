@@ -1,7 +1,7 @@
 @extends('layouts.frontend.master')
 @section('content')
 
-    <section class="page-header" data-stellar-background-ratio="1.2">
+    <section class="page-header" style="height:200px; padding-top: 50px;" data-stellar-background-ratio="1.2">
 
         <div class="container">
 
