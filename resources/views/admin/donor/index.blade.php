@@ -8,9 +8,9 @@
             <div class="col-sm-4 col-3">
                 <h4 class="page-title">{{ $title }}</h4>
             </div>
-            {{--<div class="col-sm-8 col-9 text-right m-b-20">
-                <a href="{{ route('volunteer.create') }}" class="btn btn-primary float-right btn-rounded"><i class="fa fa-plus"></i> Add Volunteer</a>
-            </div>--}}
+            <div class="col-sm-8 col-9 text-right m-b-20">
+                <a href="{{ route('donor.create') }}" class="btn btn-primary float-right btn-rounded"><i class="fa fa-plus"></i> Add Donor</a>
+            </div>
         </div>
 
 
@@ -70,30 +70,29 @@
                             <td>
                                 <span class="custom-badge {{ $donor->status == 'Active'?'status-green':'status-red' }} ">{{ $donor->status }}</span>
                             </td>
-                       {{--     <td class="text-right">
+                            <td class="text-right">
                                 <div class="dropdown dropdown-action">
                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         @if($donor->deleted_at == null)
-                                        <a class="dropdown-item" href="{{ route('volunteer.edit', $donor->id) }}"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                        <form action="{{ route('volunteer.destroy',$donor->id) }}" method="post">
+                                         <form action="{{ route('donor.destroy',$donor->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="dropdown-item" href="#" onclick="return confirm('Are you confirm to delete this volunteer?')" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</button>
+                                                <button class="dropdown-item" href="#" onclick="return confirm('Are you confirm to delete this donor?')" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</button>
 
                                         </form>
 
                                             @else
-                                            <form action="{{ route('volunteer.restore',$donor->id) }}" method="post">
+                                            <form action="{{ route('donor.restore',$donor->id) }}" method="post">
                                                 @csrf
-                                                <button class="dropdown-item" href="#" onclick="return confirm('Are you confirm to restore this volunteer?')" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Restore</button>
+                                                <button class="dropdown-item" href="#" onclick="return confirm('Are you confirm to restore this donor?')" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Restore</button>
 
                                             </form>
 
-                                            <form action="{{ route('volunteer.permanent_delete',$donor->id) }}" method="post">
+                                            <form action="{{ route('donor.permanent_delete',$donor->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="dropdown-item" href="#" onclick="return confirm('Are you confirm to permanently delete this volunteer?')" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Permanent Delete</button>
+                                                <button class="dropdown-item" href="#" onclick="return confirm('Are you confirm to permanently delete this donor?')" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Permanent Delete</button>
 
                                             </form>
 
@@ -102,7 +101,6 @@
                                     </div>
                                 </div>
                             </td>
-                        --}}
                         </tr>
                             @endforeach
 

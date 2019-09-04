@@ -44,6 +44,9 @@ Route::post('volunteer/{id}/restore','VolunteerController@restore')->name('volun
 Route::delete('volunteer/{id}/permanent_delete','VolunteerController@permanent_delete')->name('volunteer.permanent_delete');
 
 Route::resource('donor','DonorController');
+Route::post('donor/{id}/restore','DonorController@restore')->name('donor.restore');
+Route::delete('donor/{id}/permanent_delete','DonorController@permanent_delete')->name('donor.permanent_delete');
+
 
 });
 

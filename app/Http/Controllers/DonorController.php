@@ -29,7 +29,7 @@ class DonorController extends Controller
         if (isset($request->status) || $request->search) {
             $render['status'] = $request->status;
             $render['search'] = $request->search;
-            $volunteer = $donor->appends($render);
+            $donor = $donor->appends($render);
         }
 
         $data['serial'] = managePagination($donor);
@@ -43,7 +43,8 @@ class DonorController extends Controller
      */
     public function create()
     {
-        //
+        $data['title'] = 'Create New Donor';
+        return view('admin.donor.create',$data);
     }
 
     /**
@@ -54,7 +55,32 @@ class DonorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'phone'=>'required',
+            'blood_group'=>'required',
+            'district'=>'required',
+            'gender'=>'required',
+            'status'=>'required',
+        ]);
+
+        $donor= $request->except('_token');
+
+
+        /*//file upload
+        if ($request->hasFile('file')){
+            $file = $request->file('file');
+            $file->move('images/donors/',$file->getClientOriginalName());
+            $donor['file'] = 'images/donors/'.$file->getClientOriginalName();
+        }*/
+
+
+
+        $donor['created_by'] = 1;
+        Donor::create($donor);
+        session()->flash('message','Donor is Created Successfully!');
+        return redirect()->route('donor.index');
     }
 
     /**
@@ -99,6 +125,24 @@ class DonorController extends Controller
      */
     public function destroy(Donor $donor)
     {
-        //
+        $donor->delete();
+        session()->flash('message','Donor is Deleted Successfully!');
+        return redirect()->route('donor.index');
+    }
+
+    public function restore($id)
+    {
+        $donor = Donor::onlyTrashed()->findOrFail($id);
+        $donor->restore();
+        session()->flash('message','Donor is Restored Duccessfully!');
+        return redirect()->route('donor.index');
+    }
+
+    public function permanent_delete($id)
+    {
+        $donor = Donor::onlyTrashed()->findOrFail($id);
+        $donor->forceDelete();
+        session()->flash('message','Donor has been permanently deleted!');
+        return redirect()->route('donor.index');
     }
 }

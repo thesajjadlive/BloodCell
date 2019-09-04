@@ -56,7 +56,7 @@ class RegisterController extends Controller
         ]);
 
         $donor= $request->except('_token');
-
+        //$donor['created_by'] = auth();
         Donor::create($donor);
         session()->flash('message','Welcome, your registration has been successfully done!');
         return redirect()->route('front.register');
