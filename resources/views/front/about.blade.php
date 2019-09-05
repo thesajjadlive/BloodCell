@@ -104,13 +104,13 @@
 
                         <figure class="team-member">
                             <a href="#" title="ALEXANDER GARY">
-                                <img src="{{ asset('frontend/images/volunteer/team_9.jpg') }}" alt="ALEXANDER GARY"/>
+                                <img src="{{ asset('frontend/images/founder3.jpg') }}" alt="ALEXANDER GARY"/>
                             </a>
 
                         </figure> <!-- end. team-member  -->
 
                         <article class="team-info">
-                            <h3>ALEXANDER GARY</h3>
+                            <h3>YOUSUF KHAN</h3>
                             <h4>Co-Founder</h4>
                         </article>
 
@@ -135,13 +135,13 @@
 
                         <figure class="team-member">
                             <a href="#" title="MELISSA MUNOZ">
-                                <img src="{{ asset('frontend/images/volunteer/team_6.jpg') }}" alt="MELISSA MUNOZ" />
+                                <img src="{{ asset('frontend/images/founder1.jpg') }}" alt="MELISSA MUNOZ" />
                             </a>
 
                         </figure> <!-- end. team-member  -->
 
                         <article class="team-info">
-                            <h3>MELISSA MUNOZ</h3>
+                            <h3>ABUBOKOR HANIP</h3>
                             <h4>Founder</h4>
                         </article>
 
@@ -166,13 +166,13 @@
 
                         <figure class="team-member">
                             <a href="#" title="JOHN ABRAHAM">
-                                <img src="{{ asset('frontend/images/volunteer/team_7.jpg') }}" alt="JOHN ABRAHAM" />
+                                <img src="{{ asset('frontend/images/founder2.jpg') }}" alt="JOHN ABRAHAM" />
                             </a>
 
                         </figure> <!-- end. team-member  -->
 
                         <article class="team-info">
-                            <h3>JOHN ABRAHAM</h3>
+                            <h3>FARHANA HANIP</h3>
                             <h4>Co-Founder</h4>
                         </article>
                         <div class="team-content">
